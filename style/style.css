@@ -1,0 +1,113 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.background{
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 50vh;
+  background: rgb(156,175,136);
+  background: linear-gradient(103deg, rgba(156,175,136,1) 0%, rgba(156,175,136,0.65) 100%);
+}
+
+header{
+  width: 70vw;
+  overflow: hidden;
+  margin: auto;
+}
+
+header h1{
+  color: white;
+  text-align: left;
+  font-family: 'Anton', sans-serif;
+  text-decoration: line-through;
+  letter-spacing: 5px;
+}
+
+main{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main form{
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+@media (min-width: 1000px) {
+  main form{
+    width: 700px;
+  }
+}
+
+main form input{
+  width: 350px;
+  border: 0;
+  height: 30px;
+  border-radius: 10px;
+}
+
+main form .importance{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 250px;
+}
+
+main form .importance div{
+  height: 50px;
+  width: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+main form .importance div:hover{
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+main form .importance div:nth-child(1){
+  background-color: #68DCE3;
+}
+
+main form .importance div:nth-child(2){
+  background-color: #FFD79C;
+}
+
+main form .importance div:nth-child(3){
+  background-color: #FF7575;
+}
+
+main form button{
+  margin-left:5px;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 15px;
+  background-color: #9AC791;
+  color: white;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+main form button img{
+  width: 25px;
+}
+
+main .centerContent{
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+  width: 70vw;
+  height: 50vh;
+  background-color: #DEAA88;
+  border-radius: 15px;
+}
+
