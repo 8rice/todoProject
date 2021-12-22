@@ -25,30 +25,24 @@
 
     <main>
       <form id="form">
-        <input id="input"/>
+        <input type="text" id="myInput" placeholder="I have to do..."/>
         <div class="importance">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <button onclick="newElement()" type="submit"><img src="style/icons/plus.svg"></img></button>
-      </form>
+          <input type="radio" name="radio" value="blue" id="blue" class="choice choice1">
+          <label for="blue"></label>
 
-      <div id="myDIV" class="header">
-        <h2>My To Do List</h2>
-        <input type="text" id="myInput" placeholder="Title...">
-        <span onclick="newElement()" class="addBtn">Add</span>
-      </div>
-      
+          <input type="radio" name="radio" value="orange" id="orange" class="choice choice2">
+          <label for="orange"></label>
+
+          <input type="radio" name="radio" value="red" id="red" class="choice choice3">
+          <label for="red"></label>
+        </div>
+        <span onclick="newElement()" class="addBtn"><img src="style/icons/plus.svg"></img></span>
+      </form>
       
       <div class="centerContent">
-        <ul id="myUL">
-          <li>Hit the gym</li>
-          <li class="checked">Pay bills</li>
-          <li>Meet George</li>
-          <li>Buy eggs</li>
-          <li>Read a book</li>
-          <li>Organize office</li>
+        <ul id="list">
+          <li><div class="blue">Hit the gym</div></li>
+          <li><div class="checked">Pay bills</div></li>
         </ul>
       </div>
 

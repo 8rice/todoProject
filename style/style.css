@@ -20,10 +20,12 @@ header{
 
 header h1{
   color: white;
-  text-align: left;
+  text-align: right;
   font-family: 'Anton', sans-serif;
   text-decoration: line-through;
   letter-spacing: 5px;
+  font-size: 3em;
+  margin: 15px 0px;
 }
 
 main{
@@ -33,6 +35,9 @@ main{
   justify-content: center;
   align-items: center;
 }
+
+
+/* FORM POUR AJOUTER DES TODO*/
 
 main form{
   width: 70vw;
@@ -54,7 +59,10 @@ main form input{
   border: 0;
   height: 30px;
   border-radius: 10px;
+  padding: 20px 15px;
 }
+
+/* COLOR IMPORTANCE DU TODO */
 
 main form .importance{
   display: flex;
@@ -63,31 +71,48 @@ main form .importance{
   width: 250px;
 }
 
-main form .importance div{
+main form .importance .choice{
+  display: none;
+}
+
+main form .importance .choice + label{
+  height: 50px;
+  width: 35px;
+  border: 2px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+main form .importance .choice:hover + label{
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+main form .importance .choice:checked + label{
+  height: 50px;
+  width: 35px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+main form .importance .choice1 + label{
+  background-color: #68DCE3;
+}
+
+main form .importance .choice2 + label{
+  background-color: #FFD79C;
+}
+
+main form .importance .choice3 + label{
+  background-color: #FF7575;
+}
+
+main form .importance .choiceImportance{
   height: 50px;
   width: 35px;
   border-radius: 5px;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0);
 }
 
-main form .importance div:hover{
-  border: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-main form .importance div:nth-child(1){
-  background-color: #68DCE3;
-}
-
-main form .importance div:nth-child(2){
-  background-color: #FFD79C;
-}
-
-main form .importance div:nth-child(3){
-  background-color: #FF7575;
-}
-
-main form button{
+/* BOUTTON POUR AJOUTER TODO*/
+main form .addBtn{
   margin-left:5px;
   height: 50px;
   width: 50px;
@@ -95,19 +120,83 @@ main form button{
   border: 0;
   border-radius: 15px;
   background-color: #9AC791;
-  color: white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-main form button img{
+main form .addBtn img{
   width: 25px;
+  color: white;
 }
 
+/*PARTIE AFFICHAGE DES TODOs*/
 main .centerContent{
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
   width: 70vw;
   height: 50vh;
   background-color: #DEAA88;
   border-radius: 15px;
+
+  padding: 5px 50px;
+}
+
+main .centerContent #list{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0;
+}
+
+main .centerContent #list li{
+  width: 100%;
+  list-style: none;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+main .centerContent #list li div{
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+main .centerContent #list li .blue{
+  border: 1px solid #68DCE3;
+}
+
+main .centerContent #list li .orange{
+  border: 1px solid #FFD79C;
+}
+
+main .centerContent #list li .red{
+  border: 1px solid #FF7575;
+}
+
+main .centerContent #list li .checked {
+  text-decoration: line-through;
+}
+
+/* Delete button */
+main .centerContent .close{
+  font-size: 1.3em;
+  color: red;
+  border: 1px solid red;
+  width: 33px; 
+  height: 33px;
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+main .centerContent .close:hover{
+  background-color: rgba(255, 0, 0, 0.2);
+  cursor: pointer;
 }
 
