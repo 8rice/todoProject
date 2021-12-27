@@ -38,10 +38,10 @@ function newElement() {
   let inputValue = document.getElementById("myInput").value;
   let t = document.createTextNode(inputValue);
   let div =  document.createElement("div"); //juste l'élément text et pas la croix (pour le line-through)
-  let choice = document.querySelectorAll("input[type='radio']"); //get the radio inputs
+  document.querySelectorAll(".choice").forEach(
+    choice => console.log(choice.value)
+  ); //get the radio inputs
 
-  choice.forEach()
- 
 
 
   div.appendChild(t);
