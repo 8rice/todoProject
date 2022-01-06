@@ -1,51 +1,54 @@
 <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="style/style.css" rel="stylesheet">
-      <link href="style/animationdesk.css" rel="stylesheet">
-      <script defer src="script/script.js"></script>
-      <title>To-Do Project
-      </title>
 
-      <!--FONTS-->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div class="background"></div>
-    
-    <header>
-      <h1>
-        To Do
-      </h1>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style/style.css" rel="stylesheet">
+  <link href="style/animationdesk.css" rel="stylesheet">
+  <script defer src="script/script.js"></script>
+  <title>To-Do Project
+  </title>
 
-    <main>
-      <form id="form">
-        <input type="text" id="myInput" placeholder="I have to do..."/>
-        <div class="importance">
-          <input type="radio" name="radio" value="blue" id="blue" class="choice choice1">
-          <label for="blue"></label>
+  <!--FONTS-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+</head>
 
-          <input type="radio" name="radio" value="orange" id="orange" class="choice choice2">
-          <label for="orange"></label>
+<body>
+  <div class="background"></div>
 
-          <input type="radio" name="radio" value="red" id="red" class="choice choice3">
-          <label for="red"></label>
-        </div>
-        <span onclick="newElement()" class="addBtn"><img src="style/icons/plus.svg"></img></span>
-      </form>
-      
-      <div class="centerContent">
-        <ul id="list">
-          <li><div class="blue">Hit the gym</div></li>
-          <li><div class="checked">Pay bills</div></li>
-        </ul>
+  <header>
+    <h1>
+      To Do
+    </h1>
+  </header>
+
+  <main>
+    <form id="form">
+      <input type="text" id="myInput" placeholder="I have to do..." />
+      <div class="importance">
+        <input type="radio" name="radio" value="#68DCE3" id="blue" class="choice choice1">
+        <label for="blue"></label>
+
+        <input type="radio" name="radio" value="#FFD79C" id="orange" class="choice choice2">
+        <label for="orange"></label>
+
+        <input type="radio" name="radio" value="#FF7575" id="red" class="choice choice3">
+        <label for="red"></label>
       </div>
+      <span onclick="newElement()" class="addBtn"><img src="style/icons/plus.svg"></img></span>
+    </form>
 
-    </main>
-  </body>
+    <div class="centerContent">
+      <ul id="list">
+        <!--<li><div class="blue">Hit the gym</div></li>
+          <li><div class="checked">Pay bills</div></li>-->
+      </ul>
+    </div>
+
+  </main>
+</body>
+
 </html>

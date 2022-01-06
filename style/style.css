@@ -111,19 +111,22 @@ main form .importance .choiceImportance{
   cursor: pointer;
 }
 
-/* BOUTTON POUR AJOUTER TODO*/
+/* BOUTTON POUR AJOUTER UN TODO*/
 main form .addBtn{
-  margin-left:5px;
   height: 50px;
   width: 50px;
   cursor: pointer;
   border: 0;
-  border-radius: 15px;
-  background-color: #9AC791;
+  border-radius: 5px;
+  background-color: rgba(154, 199, 145,0.5);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+main form .addBtn:hover{
+  background-color: rgba(154, 199, 145,1);
 }
 
 main form .addBtn img{
@@ -135,10 +138,9 @@ main form .addBtn img{
 main .centerContent{
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
   width: 70vw;
-  height: 50vh;
+  height: fit-content;
   background-color: #DEAA88;
   border-radius: 15px;
-
   padding: 5px 50px;
 }
 
@@ -160,24 +162,14 @@ main .centerContent #list li{
   align-items: center;
   justify-content: space-between;
   padding: 5px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 main .centerContent #list li div{
   overflow-wrap: anywhere;
   cursor: pointer;
-}
-
-main .centerContent #list li .blue{
-  border: 1px solid #68DCE3;
-}
-
-main .centerContent #list li .orange{
-  border: 1px solid #FFD79C;
-}
-
-main .centerContent #list li .red{
-  border: 1px solid #FF7575;
+  padding: 5px 15px;  
+  flex-grow: 1;
 }
 
 main .centerContent #list li .checked {
@@ -189,8 +181,8 @@ main .centerContent .close{
   font-size: 1.3em;
   color: red;
   border: 1px solid red;
-  width: 33px; 
-  height: 33px;
+  width: 34px; 
+  height: 34px;
   text-align: center;
   background-color: rgba(255, 0, 0, 0.1);
 }
