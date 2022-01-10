@@ -8,19 +8,27 @@ body{
   z-index: -1;
   width: 100vw;
   height: 50vh;
-  background: rgb(156,175,136);
-  background: linear-gradient(103deg, rgba(156,175,136,1) 0%, rgba(156,175,136,0.65) 100%);
+  background: lightblue;
+  /*background: linear-gradient(103deg, rgba(156,175,136,1) 0%, rgba(156,175,136,0.65) 100%);*/
 }
 
 header{
   width: 70vw;
   overflow: hidden;
   margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img{
+  width: 75px;
+  height: 75px;
 }
 
 header h1{
   color: white;
-  text-align: right;
   font-family: 'Anton', sans-serif;
   text-decoration: line-through;
   letter-spacing: 5px;
@@ -140,7 +148,7 @@ main .centerContent{
   width: 70vw;
   height: fit-content;
   background-color: #DEAA88;
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 5px 50px;
 }
 
