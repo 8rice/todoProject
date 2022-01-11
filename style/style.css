@@ -9,7 +9,6 @@ body{
   width: 100vw;
   height: 50vh;
   background: lightblue;
-  /*background: linear-gradient(103deg, rgba(156,175,136,1) 0%, rgba(156,175,136,0.65) 100%);*/
 }
 
 header{
@@ -66,7 +65,7 @@ main form input{
   width: 350px;
   border: 0;
   height: 30px;
-  border-radius: 10px;
+  border-radius: 50px;
   padding: 20px 15px;
 }
 
@@ -150,6 +149,13 @@ main .centerContent{
   background-color: #DEAA88;
   border-radius: 5px;
   padding: 5px 50px;
+}
+
+main .centerContent .sentence{
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: sans-serif;
+  font-weight: bolder;
 }
 
 main .centerContent #list{

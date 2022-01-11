@@ -1,31 +1,23 @@
 // Create a "close" button and append it to each list item
 /* PAS UTILE C'EST JUSTE POUR LES ELEMENTS LI DEJA PRESENTS*/
 /*Peut etre utile si on charge des éléments d'une DB ? a voir */
-var myNodelist = document.getElementsByTagName("LI");
-var i;
+/*let myNodelist = document.getElementsByTagName("LI");
+let i;
 for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7"); //CROIX
+  let span = document.createElement("SPAN");
+  let txt = document.createTextNode("\u00D7"); //CROIX
   span.className = "close";
   span.appendChild(txt);
   myNodelist[i].appendChild(span);
-}
-
+}*/
 
 /* PARTIE UTILE */
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function () {
-    var li = this.parentElement;
-    li.style.display = "none";
-  }
-}
+let i, countTodos = 0;
+
+let list = document.querySelector('#list')
 
 // Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
 list.addEventListener('click', function (ev) {
   if (ev.target.tagName === 'DIV') {
     ev.target.classList.toggle('checked');
@@ -36,19 +28,22 @@ list.addEventListener('click', function (ev) {
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
-  let li = document.createElement("li");
-  let inputValue = document.getElementById("myInput").value;
-  let t = document.createTextNode(inputValue);
-  let div = document.createElement("div"); //juste l'élément text et pas la croix (pour le line-through)
+  let inputValue = document.getElementById("myInput").value
   let choices = document.querySelectorAll(".choice")
-  let colorLevel = "blue" //On recupere la couleur d'importance du todo
+
+  let li = document.createElement("li")
+  let t = document.createTextNode(inputValue)
+  let div = document.createElement("div"); //juste l'élément text et pas la croix (pour le line-through)
+
+  let colorLevel = "#68DCE3" // Default level is blue
+
   choices.forEach(
     choice => {
       if (choice.checked) {
-        colorLevel = choice.value
+        colorLevel = choice.value //Fetch importance level of todo
       }
     }
-  ); //get the radio inputs
+  );
 
   div.appendChild(t);
   div.style.borderWidth = "1px"
@@ -61,20 +56,37 @@ function newElement() {
   if (inputValue === '') {
     alert("You must write something!");
   } else {
-    document.getElementById("list").appendChild(li);
+    document.getElementById("list").appendChild(li); // Create element
+    document.getElementById("myInput").value = ""; //reinisialize written value by user
+    countTodos++;
   }
-  document.getElementById("myInput").value = "";
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
+  let span = document.createElement("SPAN");
+  let txt = document.createTextNode("\u00D7"); //Cross
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
 
+  // Click on a close button to hide the current list item
+  let close = document.getElementsByClassName("close")
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function () {
-      var div = this.parentElement;
-      div.style.display = "none";
+      let div = this.parentElement
+      div.style.display = "none"
+      countTodos--
+      countElements()
     }
+  }
+  countElements()
+}
+
+function countElements() {
+  let sentence = document.querySelector(".sentence")
+  console.log(countTodos)
+  if (countTodos == 0) {
+    sentence.style.display = "block"
+  }
+  else {
+    sentence.style.display = "none"
   }
 }
