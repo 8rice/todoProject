@@ -8,7 +8,9 @@ body{
   z-index: -1;
   width: 100vw;
   height: 50vh;
-  background: lightblue;
+  /*background: lightblue;*/
+  background: rgb(250,203,223);
+  background: linear-gradient(180deg, rgba(250,203,223,1) 0%, rgba(255,255,255,1) 100%);
 }
 
 header{
@@ -41,6 +43,7 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  scroll-behavior: smooth;
 }
 
 
@@ -67,6 +70,7 @@ main form input{
   height: 30px;
   border-radius: 50px;
   padding: 20px 15px;
+  outline: none;
 }
 
 /* COLOR IMPORTANCE DU TODO */
@@ -125,20 +129,22 @@ main form .addBtn{
   cursor: pointer;
   border: 0;
   border-radius: 5px;
-  background-color: rgba(154, 199, 145,0.5);
+  background-color: lightseagreen;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.2s ease;
 }
 
 main form .addBtn:hover{
-  background-color: rgba(154, 199, 145,1);
+  border-radius: 50%;
+  background-color: lightseagreen;
 }
 
 main form .addBtn img{
   width: 25px;
-  color: white;
+  fill: red;
 }
 
 /*PARTIE AFFICHAGE DES TODOs*/
@@ -146,7 +152,7 @@ main .centerContent{
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
   width: 70vw;
   height: fit-content;
-  background-color: #DEAA88;
+  background-color: rgba(255, 255, 255 , 0.25);
   border-radius: 5px;
   padding: 5px 50px;
 }
@@ -192,17 +198,24 @@ main .centerContent #list li .checked {
 
 /* Delete button */
 main .centerContent .close{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.3em;
   color: red;
   border: 1px solid red;
   width: 34px; 
   height: 34px;
   text-align: center;
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: rgba(255, 0, 0, 0.05);
+  transition: 0.2s ease;
 }
 
 main .centerContent .close:hover{
   background-color: rgba(255, 0, 0, 0.2);
   cursor: pointer;
+  font-size: 3em;
+  transform: rotate(90deg)
 }
+
 
