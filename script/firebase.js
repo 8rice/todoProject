@@ -1,7 +1,13 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-analytics.js";
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js";
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyAZYOVz7mUv834oMFC9EYd1vNNqh6bareg",
     authDomain: "todo-project-reb.firebaseapp.com",
@@ -16,3 +22,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const database = getDatabase(app);
+
+const db = getDatabase();
+const txt = ref(db, 'user1');
+onValue(txt, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+});
