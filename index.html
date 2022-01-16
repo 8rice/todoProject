@@ -22,38 +22,44 @@
 <body>
   <div class="background"></div>
 
-  <header>
-    <img alt="logo" src="style/icons/logo.png" />
-    <h1>
-      To Do
-    </h1>
-  </header>
+  <!--<div class="identification">
+    <input type="text">
+    <button>OK</button>
+  </div>-->
+  <div class="content">
+    <header>
+      <img alt="logo" src="style/icons/logo.png" />
+      <h1>
+        To Do
+      </h1>
+    </header>
 
-  <main>
-    <form id="form">
-      <input type="text" id="myInput" placeholder="I have to do..." />
-      <div class="importance">
-        <input type="radio" name="radio" value="#68DCE3" id="blue" class="choice choice1">
-        <label for="blue"></label>
+    <main>
+      <form id="form">
+        <input type="text" id="myInput" placeholder="I have to do..." />
+        <div class="importance">
+          <input type="radio" name="radio" value="#68DCE3" id="blue" class="choice choice1">
+          <label for="blue"></label>
 
-        <input type="radio" name="radio" value="#FFD79C" id="orange" class="choice choice2">
-        <label for="orange"></label>
+          <input type="radio" name="radio" value="#FFD79C" id="orange" class="choice choice2">
+          <label for="orange"></label>
 
-        <input type="radio" name="radio" value="#FF7575" id="red" class="choice choice3">
-        <label for="red"></label>
+          <input type="radio" name="radio" value="#FF7575" id="red" class="choice choice3">
+          <label for="red"></label>
+        </div>
+        <span onclick="newElement()" class="addBtn"><img src="style/icons/plus.svg"></img></span>
+      </form>
+
+      <div class="centerContent">
+        <p class="sentence">Write something to do, it will appear here</p>
+        <ul id="list">
+          <!--<li><div class="blue">Hit the gym</div></li>
+            <li><div class="checked">Pay bills</div></li>-->
+        </ul>
       </div>
-      <span onclick="newElement()" class="addBtn"><img src="style/icons/plus.svg"></img></span>
-    </form>
 
-    <div class="centerContent">
-      <p class="sentence">Write something to do, it will appear here</p>
-      <ul id="list">
-        <!--<li><div class="blue">Hit the gym</div></li>
-          <li><div class="checked">Pay bills</div></li>-->
-      </ul>
-    </div>
-
-  </main>
+    </main>
+  </div>
 </body>
 
 </html>
