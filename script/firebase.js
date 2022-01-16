@@ -28,6 +28,6 @@ const txt = ref(db, user)
 //fetch user's todos
 onValue(txt, (snapshot) => {
     const data = snapshot.val()
-    console.log(data)
-    Object.values(data).map(todo => console.log(todo.text + ' / crossed : ' + todo.crossed + ' / done : ' + todo.done + ' / level : ' + todo.level))
+    console.log(Object.values(data))
+    Object.values(data).map(todo => displayTodos(todo.text, todo.crossed, todo.level))
 });
