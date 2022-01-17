@@ -21,11 +21,6 @@ export function displayTodos(txt, crossed, lvl) {
   let div = document.createElement("div")
   let colorLevel = colors[lvl]
 
-  /*let listElements = list.childNodes
-  for (let a = 0; a < listElements.length; a++) {
-    listElements[a].style.display = "none"
-  }*/ //a faire fonctionner !
-
   div.appendChild(t);
   div.style.borderWidth = "1px"
   div.style.borderStyle = "solid"
@@ -65,6 +60,7 @@ document.querySelector('.addBtn').addEventListener('click', addTodo) //If add bu
 function addTodo() {
   let inputValue = document.getElementById("myInput").value
   let choices = document.querySelectorAll(".choice") //lvl choice from the 3 radio buttons
+  let listElements = list.children //Fetch all todos (list children)
 
   let colorLevel = "#68DCE3" // Default level is blue if no choice made after load of page
 
@@ -79,6 +75,11 @@ function addTodo() {
   if (inputValue === '') {
     alert("You must write something!");
   } else {
+    //Clear todos
+    for (let a = 0; a < listElements.length; a++) {
+      listElements[a].style.display = "none"
+    }
+    countTodos = 0;
     //add todo to firebase
     storeData(inputValue, findColor(colorLevel), 0) //By default todo not done (not crossed)
   }
