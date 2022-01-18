@@ -17,24 +17,71 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-
-const user = "user1/"// a demander a l'utilisateur (gerer si il rentre rien pour ne pas fetch tous les utilisateurs)
 const db = getDatabase()
+
+/*User creation/identification*/
+let user // default user
+user = window.prompt("username")
+while (!user) {
+    alert('You must put a username so that you can retrieve your todos')
+    user = window.prompt("username")
+}
+
+document.querySelector('.username').appendChild(document.createTextNode(user))
+newUser(user)
+
 const txt = ref(db, user)
+let id = 0
+
 
 //fetch user's todos
 onValue(txt, (snapshot) => {
     const data = snapshot.val()
-    console.log(Object.values(data))
-    Object.values(data).map(todo => displayTodos(todo.text, todo.crossed, todo.level))
+    //console.log(Object.values(data))
+    Object.values(data).map(todo => { id = todo.uid; displayTodos(todo.text, todo.crossed, todo.level, todo.uid) })
 })
 
+function newUser(userName) {
+    set(ref(db, userName + "/infoUser"), {
+        name: userName,
+        uid: 0,
+    })
+        .then(() => {
+            console.log("new user : " + userName)
+            user = userName;
+        })
+        .catch((error) => {
+            console.log("Failed : " + error)
+        });
+}
+
 export function storeData(text, colorLvl, done) {
-    set(ref(db, user + "/newTodoTest"), {
+    id++
+    set(ref(db, user + "/todo" + id), {
         crossed: done,
         level: colorLvl,
         text: text,
+        uid: id,
     })
+        .then(() => {
+            console.log("todo added")
+        })
+        .catch((error) => {
+            console.log("Failed : " + error)
+        });
+}
 
-    console.log("todo added")
+export function deleteFromDB(todoId) {
+    set(ref(db, user + "/todo" + todoId), {
+        crossed: null,
+        level: null,
+        text: null,
+        uid: null,
+    })
+        .then(() => {
+            console.log("todo deleted")
+        })
+        .catch((error) => {
+            console.log("Failed : " + error)
+        });
 }

@@ -1,5 +1,6 @@
-import { storeData } from "./firebase.js"
-let i, countTodos = 0;
+import { storeData, deleteFromDB } from "./firebase.js"
+
+let countTodos = 0;
 
 let list = document.querySelector('#list')
 
@@ -13,48 +14,62 @@ list.addEventListener('click', function (ev) {
 }, false);
 
 //display todos from database in firebase.js
-export function displayTodos(txt, crossed, lvl) {
-  let colors = ["#68DCE3", "#FFD79C", "#FF7575"]
+export function displayTodos(txt, crossed, lvl, id) {
+  if (id === 0) { } // id : 0 is first element of collection with infos of user we dont display
+  else {
+    let colors = ["#68DCE3", "#FFD79C", "#FF7575"]
 
-  let li = document.createElement("li")
-  let t = document.createTextNode(txt)
-  let div = document.createElement("div")
-  let colorLevel = colors[lvl]
+    let li = document.createElement("li")
+    li.className = id
+    let text = document.createTextNode(txt)
+    let div = document.createElement("div")
+    let colorLevel = colors[lvl]
+    let listElements = list.children //Fetch all todos (list children)
 
-  div.appendChild(t);
-  div.style.borderWidth = "1px"
-  div.style.borderStyle = "solid"
-  div.style.borderColor = colorLevel;
-  div.style.borderLeftWidth = "10px"
-  div.style.borderLeftColor = colorLevel; //Ajoute la couleur d'importance
-  li.appendChild(div);
+    div.appendChild(text);
 
-  if (crossed == 1) {
-    div.classList.toggle('checked') //if crossed --- or not
-  }
+    /*to-do's style*/
+    div.style.borderWidth = "1px"
+    div.style.borderStyle = "solid"
+    div.style.borderColor = colorLevel;
+    div.style.borderLeftWidth = "10px"
+    div.style.borderLeftColor = colorLevel;
 
-  document.getElementById("list").appendChild(li); // Create element
-  document.getElementById("myInput").value = ""; //reinisialize written value by user
-  countTodos++;
+    li.appendChild(div);
 
-  let span = document.createElement("SPAN");
-  let txtNode = document.createTextNode("\u00D7"); //Cross
-  span.className = "close";
-  span.appendChild(txtNode);
-  li.appendChild(span);
-
-  let close = document.getElementsByClassName("close")
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function () {
-      let div = this.parentElement
-      div.style.display = "none"
-      countTodos--
-      countElements()
+    if (crossed == 1) {
+      div.classList.toggle('checked') //If to-do crossed --- or not
     }
+
+    list.appendChild(li) //Create child list element
+    document.getElementById("myInput").value = "" //Reinisialize text input
+    countTodos++;
+
+    /*Create span for delete to-do button*/
+    let deleteCrossContainer = document.createElement("SPAN");
+    let deleteCross = document.createTextNode("\u00D7") //Cross
+    deleteCrossContainer.className = "close";
+    deleteCrossContainer.appendChild(deleteCross)
+    li.appendChild(deleteCrossContainer)
+
+    /*Delete a to-do*/
+    let close = document.getElementsByClassName("close")
+    for (let i = 0; i < close.length; i++) {
+      close[i].onclick = function () {
+        let liParentElement = this.parentElement
+        for (let a = 0; a < listElements.length; a++) {
+          listElements[a].style.display = "none"
+        }
+        countTodos = 0
+        deleteFromDB(liParentElement.className)
+      }
+    }
+    countElements()
   }
-  countElements()
+
 }
 
+/*Adding a new to-do*/
 document.querySelector('.addBtn').addEventListener('click', addTodo) //If add button clicked then call addTodo()
 
 function addTodo() {
@@ -62,11 +77,11 @@ function addTodo() {
   let choices = document.querySelectorAll(".choice") //lvl choice from the 3 radio buttons
   let listElements = list.children //Fetch all todos (list children)
 
-  let colorLevel = "#68DCE3" // Default level is blue if no choice made after load of page
+  let colorLevel = "#68DCE3" //Default level is blue if no choice made after load of page
 
   choices.forEach(
     choice => {
-      if (choice.checked) {
+      if (choice.checked) { //If selected (radio button)
         colorLevel = choice.value //Fetch importance level of todo
       }
     }
@@ -98,7 +113,7 @@ function findColor(color) {
 // display sentence if no todos
 function countElements() {
   let sentence = document.querySelector(".sentence")
-  console.log(countTodos)
+  console.log("todo count : " + countTodos)
   if (countTodos == 0) {
     sentence.style.display = "block"
   }

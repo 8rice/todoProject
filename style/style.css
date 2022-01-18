@@ -45,8 +45,21 @@ main{
   scroll-behavior: smooth;
 }
 
+/*WELCOME MESSAGE*/
 
-/* FORM POUR AJOUTER DES TODO*/
+main .welcomeUser{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: left;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+main .welcomeUser .username{
+  color: coral;
+}
+
+/*FORM POUR AJOUTER DES TODO*/
 
 main form{
   width: 70vw;
