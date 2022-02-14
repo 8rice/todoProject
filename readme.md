@@ -1,2 +1,3 @@
-#just a to-do
-using HTML/CSS JS and Firebase realtime DB
+# TodoBase  
+Using HTML/CSS JS and Firebase realtime DB  
+
